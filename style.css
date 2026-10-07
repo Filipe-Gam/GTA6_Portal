@@ -6,7 +6,11 @@ body {
     font-family: Arial;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-image:
+        linear-gradient(
+            rgba(255,156,45),
+            rgba(135,65,255)
+        );
     color: #333;
 }
 
@@ -82,7 +86,11 @@ body {
 }
 
 .secao-materias {
-    background-color: rgb(255,156,45);
+    background-image:
+        linear-gradient(
+            rgba(255,156,45),
+            rgba(135,65,255)
+        );
     margin: 10px auto;
 }
 
@@ -182,12 +190,16 @@ body {
     backdrop-filter: blur(4px);
     transition: all 0.3s ease;
 }
-.btn-tema :hover {
+.btn-tema:hover {
     background: rgba(255,255,255,0.2);
     box-shadow: 0 4px 10px rgba(255,255,255,0.2);
     transform: translateY(-2px)
 }
 
 body.mode-dark{
-    background-color: #333;
+  background-image:
+        linear-gradient(
+            rgba(255,255,255),
+            rgba(255,255,255)
+        );
 }
