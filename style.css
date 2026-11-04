@@ -8,8 +8,8 @@ body {
     padding: 0;
     background-image:
         linear-gradient(
-            rgba(255,156,45),
-            rgba(135,65,255)
+            rgb(228, 222, 222),
+            rgb(87, 87, 89)
         );
     color: #333;
 }
@@ -88,8 +88,8 @@ body {
 .secao-materias {
     background-image:
         linear-gradient(
-            rgba(255,156,45),
-            rgba(135,65,255)
+            rgba(205, 215, 232),
+            rgba(142, 102, 212)
         );
     margin: 10px auto;
 }
@@ -199,7 +199,141 @@ body {
 body.mode-dark{
   background-image:
         linear-gradient(
-            rgba(255,255,255),
-            rgba(255,255,255)
+            rgb(69, 3, 35),
+            rgb(2, 117, 125)
         );
+}
+
+/*==============================================*/
+/*              Area de Interação               */
+/*==============================================*/
+
+.area-interacao {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.btn-like {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+.btn-like:hover {
+    border-color: #e63946;
+    color: #e63946;
+    transform: scale(1.03);
+}
+
+.btn-like:hover .icone-coracao{
+    transform: scale(1.03);
+}
+
+.icone-coracao {
+    font-size: 16px;
+    display: inline-block;
+    user-select: none;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.contador-likes {
+    font-weight: 700;
+    color: #401249;
+    transition: color 0.2s ease;
+}
+
+.divisor-interacao {
+    margin: 15px 0;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.bloco-comentarios h4 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+}
+
+.form-comentario {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.input-autor, .input-texto {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.input-autor:focus, .input-texto:focus {
+    outline: none;
+    border-color: #401249;
+    box-shadow: 0 0 0 2px rgba(64,18,73,0.15);
+}
+.btn-enviar {
+    align-self: flex-end;
+    background-color: #401249;
+    color: #fff;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.btn-enviar:hover {
+    background-color: #5c1b69;
+}
+
+.item-comentario {
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #e5e5e5;
+    margin-bottom: 9px;
+}
+
+.item-comentario strong {
+    color: #401249;
+    font-size: 14px;
+}
+
+.item-comentario p {
+    margin: 6px 0;
+    font-size: 14px;
+    line-height: 1.4
+}
+
+.tempo-comentario {
+    font-size: 11px;
+    color: #888;
+}
+
+/*ESTADO CURTIDO do BOTA*/
+.btn-like.curtido {
+    border-color: #5c1b69;
+    background-color: #f4f4f4;
+    color: #401249;
+}
+
+.btn-like.curtido .contador-likes {
+    color: #f9f9f9;
 }
