@@ -63,7 +63,7 @@ Vestibulum mollis ex quis nulla posuere, vel ultricies erat sagittis. Etiam ut e
   
   <!-- Linha de Ações (Curtida) -->
   <div class="linha-acoes">
-                        <button class="btn-like" type="button" type="button" onclick="gerenciarLikes('materia-principal', this)">
+                        <button class="btn-like" type="button"   onclick="gerenciarLikes('materia-principal', this)">
                             <span class="icone-coracao">🤍</span> Curtir (<span class="contador-likes">0</span>)
                         </button>
                     </div>
@@ -76,7 +76,7 @@ Vestibulum mollis ex quis nulla posuere, vel ultricies erat sagittis. Etiam ut e
 
 
     <!-- Formulário que receberá os dados no futuro -->
-    <form class="form-comentario" onsubmit="salvarComentario(event)">
+    <form class="form-comentario" onsubmit="salvarComentario('material',this)">
       <input 
         type="text" 
         class="input-autor" 

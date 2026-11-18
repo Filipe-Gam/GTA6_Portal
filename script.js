@@ -1,9 +1,11 @@
+//lista das noticias do portal
+const listaMaterias = ["materia-principal", "material", "material2"]
+
+
 document.addEventListener("DOMContentLoaded", () => {
     carregarLikes();
 });
 
-//lista das noticias do portal
-const listaMaterias = ["materia-principal", "material", "material2"]
 
 //----------------------------------------------------------------
 // SISTEMA DE CURTIDAS
@@ -53,7 +55,85 @@ function gerenciarLikes(idMateria, btnClicado) {
     contador.innerText = totalLikes;
 }
 
+//----------------------------------------------------------------
+// SISTEMA DE comentarios
+//----------------------------------------------------------------
+function carregarComentarios() {
+    listaMaterias.forEach((idMateria) => {
+        const blocoMateria = document.getElementById(idMateria);
+        if(!blocoMateria) return;
 
+        const containerLista = blocoMateria.querySelector(".lista-comentarios");
+        const chaveBanco = `db_comentarios_${idMateria}`;
+        const listacomentarios = JSON.parse(localStorage.getItem(chaveBanco) || "[]")
+
+        desenharComentarios(containerLista, listacomentarios);
+
+    });
+}
+
+function salvarComentario(idMateria, formElement){
+
+    const inputAutor = formElement.querySelector(".input-autor");
+    const inputtexto = formElement.querySelector(".input-texto");
+
+    const autor = inputAutor.value.trim();
+    const texto = inputAutor.value.trim();
+
+    if(autor === "" || texto === "") return;
+
+    const chaveBanco = `db_comentarios_${idMateria}`;
+    const listacomentarios = JSON.parse(localStorage.getItem(chaveBanco) || "[]")
+
+    const novoComentario = {
+        autor: autor,
+        texto: texto,
+        hora: new Date().toLocaleString([], {hour: "2-digit", minute: "2-digit"})
+    };
+
+    listacomentarios.unshift(novoComentario);
+
+    localStorage.setItem(chaveBanco, JSON.stringify(listacomentarios));
+
+    inputAutor.value = "";
+    inputtexto.value = "";
+
+    const blocoMateria = formElement.closeset(".materia-completa");
+    const containerLista = blocoMateria.querySelector(".lista-comentarios")
+
+    desenharComentarios(containerLista, listacomentarios);
+
+}
+
+function desenharComentarios(container, lista){
+    if(!container) return;
+
+    container.innerHTML = "";
+
+    if(lista.length === 0){
+        container.innertHTML = <span class="tempo-commentario">seja o primeiro a fazer um comentario</span>;
+        return;
+    }
+
+    lista.forEach((item) => {
+        const card = document.createElement("div");
+        card.classList.add("card-comentario");
+
+        const strongAutor = document.createElement("strong");
+        strongAutor.textContent = item.autor;
+
+        const pTexto = document.createElement("p");
+        pTexto.textContent = item.texto; 
+
+        const spanHora = document.createElement("span");
+        spanHora.classList.add("tempo-comentario");
+        spanHora.textContent = `(${item.hora})`;
+
+        card.append(strongAutor, pTexto, spanHora);
+        container.appendChild(card);
+        
+});
+}
 
 
 
